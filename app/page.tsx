@@ -52,7 +52,300 @@ const statusIcons = {
 }
 
 export default function TeamObjectivesApp() {
-  const [objectives, setObjectives] = useState<Objective[]>([])
+  const [objectives, setObjectives] = useState<Objective[]>([
+    // Software Development & Engineering
+    {
+      id: "1",
+      title: "Implement new user authentication system",
+      description: "Upgrade the current authentication to support OAuth and two-factor authentication for better security.",
+      assignee: "Alice Johnson",
+      priority: "High",
+      status: "In Progress",
+      dueDate: "2024-02-15",
+      progress: 60,
+      createdAt: "2024-01-10T10:00:00.000Z"
+    },
+    {
+      id: "2", 
+      title: "Redesign mobile app interface",
+      description: "Create a more intuitive and modern mobile interface based on user feedback and usability testing.",
+      assignee: "Bob Smith",
+      priority: "Medium",
+      status: "Not Started",
+      dueDate: "2024-03-01",
+      progress: 0,
+      createdAt: "2024-01-12T14:30:00.000Z"
+    },
+    {
+      id: "3",
+      title: "Set up automated testing pipeline",
+      description: "Implement comprehensive automated testing including unit tests, integration tests, and end-to-end testing.",
+      assignee: "Carol Davis",
+      priority: "High",
+      status: "Completed",
+      dueDate: "2024-01-30",
+      progress: 100,
+      createdAt: "2024-01-05T09:15:00.000Z"
+    },
+    {
+      id: "4",
+      title: "Optimize database performance",
+      description: "Analyze and improve database queries, add proper indexing, and implement caching strategies.",
+      assignee: "David Wilson",
+      priority: "Medium",
+      status: "In Progress", 
+      dueDate: "2024-02-20",
+      progress: 30,
+      createdAt: "2024-01-08T16:45:00.000Z"
+    },
+    {
+      id: "5",
+      title: "Create comprehensive documentation",
+      description: "Write detailed API documentation, user guides, and developer onboarding materials.",
+      assignee: "Emma Brown",
+      priority: "Low",
+      status: "In Progress",
+      dueDate: "2024-03-15",
+      progress: 40,
+      createdAt: "2024-01-15T11:20:00.000Z"
+    },
+    
+    // Marketing & Growth
+    {
+      id: "6",
+      title: "Launch social media campaign",
+      description: "Develop and execute a comprehensive social media strategy across LinkedIn, Twitter, and Instagram to increase brand awareness.",
+      assignee: "Alice Johnson",
+      priority: "High",
+      status: "In Progress",
+      dueDate: "2024-02-28",
+      progress: 75,
+      createdAt: "2024-01-18T13:10:00.000Z"
+    },
+    {
+      id: "7",
+      title: "Conduct customer satisfaction survey",
+      description: "Design and distribute a comprehensive survey to gather feedback on product features and customer experience.",
+      assignee: "Bob Smith",
+      priority: "Medium",
+      status: "Completed",
+      dueDate: "2024-01-25",
+      progress: 100,
+      createdAt: "2024-01-03T08:30:00.000Z"
+    },
+    {
+      id: "8",
+      title: "Develop content marketing strategy",
+      description: "Create a 6-month content calendar with blog posts, whitepapers, and video content to drive organic traffic.",
+      assignee: "Carol Davis",
+      priority: "Medium",
+      status: "Not Started",
+      dueDate: "2024-03-10",
+      progress: 0,
+      createdAt: "2024-01-20T15:45:00.000Z"
+    },
+    
+    // Operations & Infrastructure
+    {
+      id: "9",
+      title: "Migrate to cloud infrastructure",
+      description: "Move current on-premise servers to AWS cloud infrastructure for better scalability and reliability.",
+      assignee: "David Wilson",
+      priority: "High",
+      status: "In Progress",
+      dueDate: "2024-03-30",
+      progress: 45,
+      createdAt: "2024-01-22T12:00:00.000Z"
+    },
+    {
+      id: "10",
+      title: "Implement disaster recovery plan",
+      description: "Establish comprehensive backup and disaster recovery procedures to ensure business continuity.",
+      assignee: "Emma Brown",
+      priority: "High",
+      status: "Not Started",
+      dueDate: "2024-04-15",
+      progress: 0,
+      createdAt: "2024-01-25T10:15:00.000Z"
+    },
+    {
+      id: "11",
+      title: "Upgrade network security protocols",
+      description: "Implement advanced firewall rules, VPN access, and intrusion detection systems.",
+      assignee: "Alice Johnson",
+      priority: "High",
+      status: "In Progress",
+      dueDate: "2024-02-10",
+      progress: 80,
+      createdAt: "2024-01-05T14:20:00.000Z"
+    },
+    
+    // Product Development
+    {
+      id: "12",
+      title: "Research competitor analysis",
+      description: "Conduct thorough analysis of top 5 competitors including feature comparison and pricing strategies.",
+      assignee: "Bob Smith",
+      priority: "Medium",
+      status: "Completed",
+      dueDate: "2024-01-20",
+      progress: 100,
+      createdAt: "2024-01-01T09:00:00.000Z"
+    },
+    {
+      id: "13",
+      title: "Design new dashboard interface",
+      description: "Create wireframes and prototypes for a redesigned user dashboard with improved analytics and navigation.",
+      assignee: "Carol Davis",
+      priority: "Medium",
+      status: "In Progress",
+      dueDate: "2024-03-05",
+      progress: 65,
+      createdAt: "2024-01-15T11:30:00.000Z"
+    },
+    {
+      id: "14",
+      title: "Implement real-time notifications",
+      description: "Add push notifications and real-time updates using WebSocket connections for better user engagement.",
+      assignee: "David Wilson",
+      priority: "Low",
+      status: "Not Started",
+      dueDate: "2024-04-01",
+      progress: 0,
+      createdAt: "2024-01-28T16:45:00.000Z"
+    },
+    
+    // Sales & Business Development
+    {
+      id: "15",
+      title: "Develop partnership program",
+      description: "Create a structured partner program with onboarding materials, commission structure, and support resources.",
+      assignee: "Emma Brown",
+      priority: "Medium",
+      status: "In Progress",
+      dueDate: "2024-03-20",
+      progress: 35,
+      createdAt: "2024-01-12T13:15:00.000Z"
+    },
+    {
+      id: "16",
+      title: "Launch referral incentive program",
+      description: "Design and implement a customer referral program with rewards and tracking system.",
+      assignee: "Alice Johnson",
+      priority: "Low",
+      status: "Not Started",
+      dueDate: "2024-04-10",
+      progress: 0,
+      createdAt: "2024-01-30T10:00:00.000Z"
+    },
+    {
+      id: "17",
+      title: "Optimize sales funnel conversion",
+      description: "Analyze current sales funnel and implement improvements to increase conversion rates by 15%.",
+      assignee: "Bob Smith",
+      priority: "High",
+      status: "In Progress",
+      dueDate: "2024-02-25",
+      progress: 50,
+      createdAt: "2024-01-08T15:30:00.000Z"
+    },
+    
+    // Human Resources & Team Development
+    {
+      id: "18",
+      title: "Implement employee wellness program",
+      description: "Launch comprehensive wellness program including mental health resources, fitness benefits, and work-life balance initiatives.",
+      assignee: "Carol Davis",
+      priority: "Medium",
+      status: "In Progress",
+      dueDate: "2024-03-15",
+      progress: 25,
+      createdAt: "2024-01-20T09:45:00.000Z"
+    },
+    {
+      id: "19",
+      title: "Establish remote work policies",
+      description: "Create detailed remote work guidelines, communication protocols, and productivity measurement systems.",
+      assignee: "David Wilson",
+      priority: "Medium",
+      status: "Completed",
+      dueDate: "2024-01-15",
+      progress: 100,
+      createdAt: "2024-01-02T11:20:00.000Z"
+    },
+    {
+      id: "20",
+      title: "Develop skills training program",
+      description: "Design and launch professional development program with courses, certifications, and mentorship opportunities.",
+      assignee: "Emma Brown",
+      priority: "Low",
+      status: "Not Started",
+      dueDate: "2024-04-30",
+      progress: 0,
+      createdAt: "2024-01-25T14:10:00.000Z"
+    },
+    
+    // Finance & Analytics
+    {
+      id: "21",
+      title: "Implement financial forecasting model",
+      description: "Build predictive financial models for revenue forecasting and budget planning using historical data.",
+      assignee: "Alice Johnson",
+      priority: "High",
+      status: "In Progress",
+      dueDate: "2024-02-15",
+      progress: 70,
+      createdAt: "2024-01-10T12:30:00.000Z"
+    },
+    {
+      id: "22",
+      title: "Set up advanced analytics dashboard",
+      description: "Create comprehensive business intelligence dashboard with KPIs, trends, and automated reporting.",
+      assignee: "Bob Smith",
+      priority: "Medium",
+      status: "In Progress",
+      dueDate: "2024-03-08",
+      progress: 40,
+      createdAt: "2024-01-18T16:00:00.000Z"
+    },
+    
+    // Quality Assurance & Compliance
+    {
+      id: "23",
+      title: "Achieve ISO 27001 certification",
+      description: "Implement information security management system and complete ISO 27001 certification process.",
+      assignee: "Carol Davis",
+      priority: "High",
+      status: "In Progress",
+      dueDate: "2024-06-30",
+      progress: 30,
+      createdAt: "2024-01-05T10:45:00.000Z"
+    },
+    {
+      id: "24",
+      title: "Conduct security penetration testing",
+      description: "Hire external security firm to perform comprehensive penetration testing and vulnerability assessment.",
+      assignee: "David Wilson",
+      priority: "High",
+      status: "Completed",
+      dueDate: "2024-01-31",
+      progress: 100,
+      createdAt: "2024-01-15T13:20:00.000Z"
+    },
+    
+    // Innovation & Research
+    {
+      id: "25",
+      title: "Explore AI integration opportunities",
+      description: "Research and prototype AI/ML features that could enhance product capabilities and user experience.",
+      assignee: "Emma Brown",
+      priority: "Low",
+      status: "Not Started",
+      dueDate: "2024-05-15",
+      progress: 0,
+      createdAt: "2024-01-28T11:15:00.000Z"
+    }
+  ])
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingObjective, setEditingObjective] = useState<Objective | null>(null)
   const [formData, setFormData] = useState({
@@ -69,122 +362,14 @@ export default function TeamObjectivesApp() {
   useEffect(() => {
     const savedObjectives = localStorage.getItem("teamObjectives")
     if (savedObjectives) {
-      setObjectives(JSON.parse(savedObjectives))
-    } else {
-      // Add dummy data if no saved objectives exist
-      const dummyObjectives: Objective[] = [
-        {
-          id: "1",
-          title: "Implement new user authentication system",
-          description: "Upgrade the current authentication to support OAuth and two-factor authentication for better security.",
-          assignee: "Alice Johnson",
-          priority: "High",
-          status: "In Progress",
-          dueDate: "2024-02-15",
-          progress: 60,
-          createdAt: "2024-01-10T10:00:00.000Z"
-        },
-        {
-          id: "2", 
-          title: "Redesign mobile app interface",
-          description: "Create a more intuitive and modern mobile interface based on user feedback and usability testing.",
-          assignee: "Bob Smith",
-          priority: "Medium",
-          status: "Not Started",
-          dueDate: "2024-03-01",
-          progress: 0,
-          createdAt: "2024-01-12T14:30:00.000Z"
-        },
-        {
-          id: "3",
-          title: "Set up automated testing pipeline",
-          description: "Implement comprehensive automated testing including unit tests, integration tests, and end-to-end testing.",
-          assignee: "Carol Davis",
-          priority: "High",
-          status: "Completed",
-          dueDate: "2024-01-30",
-          progress: 100,
-          createdAt: "2024-01-05T09:15:00.000Z"
-        },
-        {
-          id: "4",
-          title: "Optimize database performance",
-          description: "Analyze and improve database queries, add proper indexing, and implement caching strategies.",
-          assignee: "David Wilson",
-          priority: "Medium",
-          status: "In Progress", 
-          dueDate: "2024-02-20",
-          progress: 30,
-          createdAt: "2024-01-08T16:45:00.000Z"
-        },
-        {
-          id: "5",
-          title: "Create comprehensive documentation",
-          description: "Write detailed API documentation, user guides, and developer onboarding materials.",
-          assignee: "Emma Brown",
-          priority: "Low",
-          status: "In Progress",
-          dueDate: "2024-03-15",
-          progress: 40,
-          createdAt: "2024-01-15T11:20:00.000Z"
-        },
-        {
-          id: "6",
-          title: "Implement real-time notifications",
-          description: "Add push notifications and real-time updates using WebSocket connections.",
-          assignee: "Alice Johnson",
-          priority: "Medium",
-          status: "Not Started",
-          dueDate: "2024-04-01",
-          progress: 0,
-          createdAt: "2024-01-18T13:10:00.000Z"
-        },
-        {
-          id: "7",
-          title: "Security audit and penetration testing",
-          description: "Conduct thorough security assessment and fix any vulnerabilities found.",
-          assignee: "Bob Smith",
-          priority: "High",
-          status: "Completed",
-          dueDate: "2024-01-25",
-          progress: 100,
-          createdAt: "2024-01-03T08:30:00.000Z"
-        },
-        {
-          id: "8",
-          title: "Migrate to cloud infrastructure",
-          description: "Move current on-premise servers to cloud infrastructure for better scalability and reliability.",
-          assignee: "Carol Davis",
-          priority: "High",
-          status: "In Progress",
-          dueDate: "2024-03-30",
-          progress: 75,
-          createdAt: "2024-01-20T15:45:00.000Z"
-        },
-        {
-          id: "9",
-          title: "User feedback collection system",
-          description: "Build an integrated system for collecting and analyzing user feedback and feature requests.",
-          assignee: "David Wilson",
-          priority: "Low",
-          status: "Not Started",
-          dueDate: "2024-04-15",
-          progress: 0,
-          createdAt: "2024-01-22T12:00:00.000Z"
-        },
-        {
-          id: "10",
-          title: "Performance monitoring dashboard",
-          description: "Create a comprehensive dashboard for monitoring application performance, uptime, and user metrics.",
-          assignee: "Emma Brown",
-          priority: "Medium",
-          status: "In Progress",
-          dueDate: "2024-02-28",
-          progress: 20,
-          createdAt: "2024-01-25T10:15:00.000Z"
+      try {
+        const parsed = JSON.parse(savedObjectives)
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setObjectives(parsed)
         }
-      ]
-      setObjectives(dummyObjectives)
+      } catch (error) {
+        console.error('Error parsing saved objectives:', error)
+      }
     }
   }, [])
 
