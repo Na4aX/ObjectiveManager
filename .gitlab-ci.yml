@@ -1,0 +1,74 @@
+# GitLab CI/CD Pipeline for Team Objectives App
+# This pipeline builds and deploys a Next.js static site to GitLab Pages
+
+stages:
+  - build
+  - deploy
+
+variables:
+  NODE_VERSION: "18"
+  NEXT_TELEMETRY_DISABLED: "1"
+
+# Cache node_modules for faster builds
+cache:
+  paths:
+    - node_modules/
+    - .next/cache/
+
+# Build stage - Install dependencies and build the app
+build:
+  stage: build
+  image: node:${NODE_VERSION}-alpine
+  before_script:
+    - echo "Building Team Objectives App..."
+    - node --version
+    - npm --version
+  script:
+    - npm ci --prefer-offline --no-audit
+    - npm run build
+  artifacts:
+    paths:
+      - out/
+    expire_in: 1 hour
+  only:
+    - main
+    - develop
+    - merge_requests
+
+# Deploy to GitLab Pages
+pages:
+  stage: deploy
+  image: alpine:latest
+  dependencies:
+    - build
+  script:
+    - echo "Deploying to GitLab Pages..."
+    - mkdir public
+    - cp -r out/* public/
+    - echo "Deployment complete!"
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+
+# Optional: Deploy preview for merge requests
+deploy_preview:
+  stage: deploy
+  image: alpine:latest
+  dependencies:
+    - build
+  script:
+    - echo "Creating preview deployment..."
+    - mkdir preview
+    - cp -r out/* preview/
+    - echo "Preview available at: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME"
+  artifacts:
+    paths:
+      - preview
+    expire_in: 7 days
+  environment:
+    name: preview/$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    url: https://$CI_PROJECT_NAMESPACE.gitlab.io/-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/preview/index.html
+  only:
+    - merge_requests
